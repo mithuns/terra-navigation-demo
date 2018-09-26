@@ -1,0 +1,111 @@
+{
+  "name": "terra-navigation-demo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Module for navigation demonstrations",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cerner/terra-navigation-demo.git"
+  },
+  "keywords": [
+    "terra-navigation-demo"
+  ],
+  "publishConfig": {
+    "registry": "https://cernerrepos.net/api/npm/npm-integration-local"
+  },
+  "author": "Cerner Corporation",
+  "license": "Apache-2.0",
+  "browserslist": [
+    "extends browserslist-config-terra"
+  ],
+  "eslintConfig": {
+    "extends": "terra"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-terra"
+  },
+  "scripts": {
+    "build": "npm run compile",
+    "clean:all": "rimraf ./package-lock.json && rimraf ./node_modules",
+    "clean:install": "npm run clean:all && npm install",
+    "clean:obsolete-jest-snapshots": "jest -u",
+    "clean:obsolete-wdio-snapshots": "rimraf ./tests/wdio/**/__snapshots__ && npm run test:wdio",
+    "compile": "npm run compile:clean && npm run compile:build",
+    "compile:clean": "rimraf lib",
+    "compile:build": "babel src --out-dir lib --copy-files",
+    "deploy-gh-pages": "npm run pack && gh-pages -d build",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "lint:scss": "stylelint src/**/*.scss",
+    "pack": "NODE_ENV=production webpack --config node_modules/terra-dev-site/config/webpack/webpack.config.js -p",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "prepush": "node scripts/prepush/index.js",
+    "start": "tt-serve",
+    "start-static": "tt-serve-static",
+    "test": "npm run lint && npm run test:jest && npm run test:wdio",
+    "test:jest": "jest --config jestconfig.js",
+    "test:jest-coverage": "npm run test:jest -- --coverage",
+    "test:lint": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "prop-types": "^15.5.8",
+    "terra-base": "^3.2.0",
+    "terra-action-header": "^1.6.0",
+    "terra-content-container": "^2.2.0",
+    "terra-doc-template": "^1.5.0",
+    "terra-icon": "^2.2.0",
+    "terra-spacer": "^2.15.0",
+    "terra-status-view": "^2.3.0",
+    "terra-framework": "git://github.com/cerner/terra-framework.git#navigation_updates",
+    "terra-demographics-banner": "^2.24.1",
+    "terra-form-input": "^1.24.1",
+    "react-router-dom": "^4.3.1",
+    "terra-image": "^2.21.1",
+    "terra-avatar": "^1.20.1",
+    "terra-button": "^2.23.1",
+    "terra-list": "^2.23.1",
+    "terra-clinical-item-view": "^2.14.0"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-on-rails": "7.0.4",
+    "terra-app-delegate": "^2.0.0"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.15.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-jest": "^21.0.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "browserslist-config-terra": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-intl": "^1.4.5",
+    "enzyme-to-json": "^3.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-terra": "^1.0.0",
+    "gh-pages": "^1.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^21.0.2",
+    "node-sass": "^4.5.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-on-rails": "7.0.4",
+    "react-router": "^3.2.0",
+    "react-test-renderer": "^16.2.0",
+    "rimraf": "^2.6.1",
+    "shelljs": "^0.7.7",
+    "stylelint": "^9.0.0",
+    "stylelint-config-terra": "^1.0.0",
+    "terra-app-delegate": "^2.0.0",
+    "terra-dev-site": "^2.1.0"
+  }
+}
