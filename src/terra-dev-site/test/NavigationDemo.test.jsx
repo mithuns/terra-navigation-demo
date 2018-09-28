@@ -80,19 +80,19 @@ const routingConfig = {
           props: {
             title: 'Patient List',
             menuItems: [{
-              text: 'Adams, Ricardo',
+              text: 'Adams, Ricardo - DOB: 12/21/1948',
               path: '/patient_list/6778266/chart',
               hasSubMenu: true,
             }, {
-              text: 'Birch, Dena',
+              text: 'Birch, Dena - DOB: 5/01/1945',
               path: '/patient_list/28032901/chart',
               hasSubMenu: true,
             }, {
-              text: 'Derosier, Shauna',
+              text: 'Derosier, Shauna - DOB: 7/24/1929',
               path: '/patient_list/57742980/chart',
               hasSubMenu: true,
             }, {
-              text: 'Fisk, Chou',
+              text: 'Fisk, Chou - DOB: 4/13/1956',
               path: '/patient_list/14600575/chart',
               hasSubMenu: true,
             }],
